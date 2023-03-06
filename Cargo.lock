@@ -4813,7 +4813,7 @@ dependencies = [
  "wasmer-types",
  "wasmer-vfs",
  "wasmer-wasi",
- "webc",
+ "webc 4.1.1",
 ]
 
 [[package]]
@@ -4919,7 +4919,7 @@ dependencies = [
  "wasmer-wasm-interface",
  "wasmer-wast",
  "wasmparser 0.51.4",
- "webc",
+ "webc 5.0.0-rc.5",
 ]
 
 [[package]]
@@ -5155,7 +5155,7 @@ dependencies = [
  "toml",
  "url",
  "wasmer-toml",
- "webc",
+ "webc 5.0.0-rc.5",
  "whoami",
 ]
 
@@ -5225,7 +5225,7 @@ dependencies = [
  "tokio",
  "tracing",
  "typetag",
- "webc",
+ "webc 5.0.0-rc.5",
 ]
 
 [[package]]
@@ -5319,7 +5319,7 @@ dependencies = [
  "wasmer-wasi-types",
  "wcgi",
  "wcgi-host",
- "webc",
+ "webc 5.0.0-rc.5",
  "weezl",
  "winapi",
 ]
@@ -5619,6 +5619,29 @@ checksum = "e33b99f4b23ba3eec1a53ac264e35a755f00e966e0065077d6027c0f575b0b97"
 dependencies = [
  "js-sys",
  "wasm-bindgen",
+]
+
+[[package]]
+name = "webc"
+version = "4.1.1"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "e4af0f2f0b6bf2e4366375c3cd6635aef1a2eb66cd02454d79525aa7eecf0751"
+dependencies = [
+ "anyhow",
+ "base64 0.13.1",
+ "byteorder",
+ "indexmap",
+ "leb128",
+ "lexical-sort",
+ "memchr",
+ "path-clean",
+ "rand",
+ "serde",
+ "serde_cbor",
+ "serde_json",
+ "sha2",
+ "url",
+ "walkdir",
 ]
 
 [[package]]
