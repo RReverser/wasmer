@@ -7,11 +7,11 @@ use std::{collections::BTreeSet, path::Path};
 use wasmer::{AsStoreMut, Instance, Module, RuntimeError, Value};
 use wasmer_vfs::FileSystem;
 use wasmer_vfs::{DeviceFile, PassthruFileSystem, RootFileSystemBuilder};
-use wasmer_wasi::types::__WASI_STDIN_FILENO;
 use wasmer_wasi::{
     default_fs_backing, get_wasi_versions, PluggableRuntimeImplementation, WasiEnv, WasiError,
     WasiFunctionEnv, WasiVersion,
 };
+use wasmer_wasi::{types::__WASI_STDIN_FILENO, WasiEnvBuilder};
 
 use clap::Parser;
 
@@ -101,14 +101,13 @@ impl Wasi {
         get_wasi_versions(module, false).is_some()
     }
 
-    /// Helper function for instantiating a module with Wasi imports for the `Run` command.
-    pub fn instantiate(
+    pub fn prepare(
         &self,
         store: &mut impl AsStoreMut,
         module: &Module,
         program_name: String,
         args: Vec<String>,
-    ) -> Result<(WasiFunctionEnv, Instance)> {
+    ) -> Result<WasiEnvBuilder> {
         let args = args.into_iter().map(|arg| arg.into_bytes());
 
         let map_commands = self
@@ -181,6 +180,18 @@ impl Wasi {
             }
         }
 
+        Ok(builder)
+    }
+
+    /// Helper function for instantiating a module with Wasi imports for the `Run` command.
+    pub fn instantiate(
+        &self,
+        store: &mut impl AsStoreMut,
+        module: &Module,
+        program_name: String,
+        args: Vec<String>,
+    ) -> Result<(WasiFunctionEnv, Instance)> {
+        let builder = self.prepare(store, module, program_name, args)?;
         let (instance, wasi_env) = builder.instantiate(module.clone(), store)?;
         Ok((wasi_env, instance))
     }
