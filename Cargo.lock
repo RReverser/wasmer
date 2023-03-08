@@ -106,7 +106,21 @@ version = "1.0.8"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "c98233c6673d8601ab23e77eb38f999c51100d46c5703b17288c57fddf3a1ffe"
 dependencies = [
- "bstr",
+ "bstr 0.2.17",
+ "doc-comment",
+ "predicates",
+ "predicates-core",
+ "predicates-tree",
+ "wait-timeout",
+]
+
+[[package]]
+name = "assert_cmd"
+version = "2.0.8"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "9834fcc22e0874394a010230586367d4a3e9f11b560f469262678547e1d2575e"
+dependencies = [
+ "bstr 1.3.0",
  "doc-comment",
  "predicates",
  "predicates-core",
@@ -240,6 +254,18 @@ dependencies = [
  "lazy_static",
  "memchr",
  "regex-automata",
+]
+
+[[package]]
+name = "bstr"
+version = "1.3.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "5ffdb39cb703212f3c11973452c2861b972f757b021158f3516ba10f2fa8b2c1"
+dependencies = [
+ "memchr",
+ "once_cell",
+ "regex-automata",
+ "serde",
 ]
 
 [[package]]
@@ -1859,7 +1885,7 @@ version = "0.1.7"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "340dd3d6102fa919bd20987024a6d84954c36ec691ac1efea37742ee983c8dd5"
 dependencies = [
- "assert_cmd",
+ "assert_cmd 1.0.8",
  "cc",
  "inline-c-macro",
  "lazy_static",
@@ -4813,7 +4839,7 @@ dependencies = [
  "wasmer-types",
  "wasmer-vfs",
  "wasmer-wasi",
- "webc 4.1.1",
+ "webc",
 ]
 
 [[package]]
@@ -4919,7 +4945,7 @@ dependencies = [
  "wasmer-wasm-interface",
  "wasmer-wast",
  "wasmparser 0.51.4",
- "webc 5.0.0-rc.5",
+ "webc",
 ]
 
 [[package]]
@@ -5061,7 +5087,7 @@ version = "0.1.2"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "7c4e7a2a3363ceeb2ee60371af9460748f2bf53569b58627f1f640284ab07778"
 dependencies = [
- "assert_cmd",
+ "assert_cmd 1.0.8",
  "cc",
  "lazy_static",
  "predicates",
@@ -5088,6 +5114,7 @@ name = "wasmer-integration-tests-cli"
 version = "3.2.0-alpha.1"
 dependencies = [
  "anyhow",
+ "assert_cmd 2.0.8",
  "dirs",
  "flate2",
  "hex",
@@ -5155,7 +5182,7 @@ dependencies = [
  "toml",
  "url",
  "wasmer-toml",
- "webc 5.0.0-rc.5",
+ "webc",
  "whoami",
 ]
 
@@ -5225,7 +5252,7 @@ dependencies = [
  "tokio",
  "tracing",
  "typetag",
- "webc 5.0.0-rc.5",
+ "webc",
 ]
 
 [[package]]
@@ -5319,7 +5346,7 @@ dependencies = [
  "wasmer-wasi-types",
  "wcgi",
  "wcgi-host",
- "webc 5.0.0-rc.5",
+ "webc",
  "weezl",
  "winapi",
 ]
@@ -5619,29 +5646,6 @@ checksum = "e33b99f4b23ba3eec1a53ac264e35a755f00e966e0065077d6027c0f575b0b97"
 dependencies = [
  "js-sys",
  "wasm-bindgen",
-]
-
-[[package]]
-name = "webc"
-version = "4.1.1"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "e4af0f2f0b6bf2e4366375c3cd6635aef1a2eb66cd02454d79525aa7eecf0751"
-dependencies = [
- "anyhow",
- "base64 0.13.1",
- "byteorder",
- "indexmap",
- "leb128",
- "lexical-sort",
- "memchr",
- "path-clean",
- "rand",
- "serde",
- "serde_cbor",
- "serde_json",
- "sha2",
- "url",
- "walkdir",
 ]
 
 [[package]]
